@@ -9,7 +9,7 @@ class Header extends React.Component {
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand href="/">Facebook</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Link to="/" className="nav-item nav-link">News Feed</Link>
+                    <a href="/" className="nav-item nav-link">News Feed</a>
                     <Link to="/Login" className="nav-item nav-link">Login</Link>
                     <Link to="/Signup" className="nav-item nav-link">Signup</Link>
                 </Nav>
