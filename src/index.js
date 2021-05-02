@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Routes from "../src/Routes/Routes";
 import "./index.css";
+import "antd/dist/antd.css";
 import App from "./App";
 import Header from "../src/components/Header/Header";
 import reportWebVitals from "./reportWebVitals";
