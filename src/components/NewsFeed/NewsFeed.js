@@ -8,7 +8,7 @@ class NewsFeed extends React.Component {
             posts: [],
             loading: false,
             //it should be passed from props according to user logged in
-            token: '33a901c4e13e11acbfb647191040a2c5fe8e67b9'
+            token: '72d83d84784a999e207cf766babfb9f189cd06b9'
         }
     }
 

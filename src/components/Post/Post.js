@@ -48,11 +48,10 @@ class Post extends React.Component {
       e.preventDefault();
       console.log(this.state.post.id)
       axios.post('http://localhost:8000/api/posts/like', {
-         
          PID: this.state.post.id
       },{
          headers: {
-           'Authorization': `token 3746252c6831564ea21361fb6d5b5b731a6a0cee`
+           'Authorization': `token 72d83d84784a999e207cf766babfb9f189cd06b9`
          }
        }).then(function (response) {
           console.log(response.data);
