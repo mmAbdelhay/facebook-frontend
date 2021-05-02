@@ -22,7 +22,6 @@ class NewsFeed extends React.Component {
         });
 
         let resJson = await res.json();
-        console.log(resJson);
         this.setState({posts: resJson, loading: false});
     }
 

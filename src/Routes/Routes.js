@@ -20,7 +20,7 @@ export default function Routes() {
          <Route path="/signup" exact>
             <Signup />
          </Route>
-         {/*<CreatePost />*/}
+         {/*<UpdatePost />*/}
          {/* <App /> */}
          {/* </Route> */}
       </>

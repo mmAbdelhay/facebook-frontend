@@ -30,6 +30,7 @@ class App extends React.Component {
                <CreatePost />
                <NewsFeed />
             </div>
+            <br/>
             <Footer />
          </>
       );
@@ -54,7 +55,7 @@ class App extends React.Component {
                      <Route path="/login" component={Login} />
                      <Route path="/signup" component={Signup} />
                      <Route path="/">
-                        <CreatePost />
+                        <UpdatePost />
                         <NewsFeed />
                      </Route>
                   </Switch>
