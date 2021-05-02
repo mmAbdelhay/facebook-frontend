@@ -1,45 +1,50 @@
-import React from 'react';
-import Post from '../Post/Post'
+import React from "react";
+import Post from "../Post/Post";
+import { checkIfLoggedIn } from "../../Service/CheckUserStatus";
+import { getAllPosts } from "../../Service/Posts";
+import axios from "axios";
 
 class NewsFeed extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            posts: [],
-            loading: false,
-            //it should be passed from props according to user logged in
-            token: '72d83d84784a999e207cf766babfb9f189cd06b9'
-        }
-    }
+   constructor() {
+      super();
+      this.state = {
+         posts: [],
+         loading: false,
+         //it should be passed from props according to user logged in
+         token: "",
+      };
+   }
 
-    async componentDidMount() {
-        this.setState({loading: true});
-        let res = await fetch("http://localhost:8000/api/posts/", {
-            method: 'GET',
-            headers: {
-                'Authorization': `Token ${this.state.token}`,
-            }
-        });
+   async componentDidMount() {
+      //   const [status, token] = checkIfLoggedIn();
+      //   this.setState({
+      //      token: token,
+      //   });
+      this.setState({ loading: true });
 
-        let resJson = await res.json();
-        console.log(res);
-        this.setState({posts: resJson, loading: false});
-    }
+      const response = await getAllPosts();
+      //   console.log(response);
+      this.setState({ posts: response, loading: false });
+   }
 
-    render() {
-        return (
-            <div className="col-sm-6">
-                {!this.state.loading ? this.state.posts.map((item) => {
-                    return (
-                        <>
-                            <Post key={item.id} post={item}/>
-                            <br/>
-                        </>
-                    )
-                }) : <div>Posts is loading ...</div>}
-            </div>
-        )
-    }
+   render() {
+      return (
+         <div className="col-sm-6">
+            {!this.state.loading ? (
+               this.state.posts.map((item) => {
+                  return (
+                     <div key={item.id}>
+                        <Post key={item.id} post={item} />
+                        <br />
+                     </div>
+                  );
+               })
+            ) : (
+               <div>Posts is loading ...</div>
+            )}
+         </div>
+      );
+   }
 }
 
 export default NewsFeed;
