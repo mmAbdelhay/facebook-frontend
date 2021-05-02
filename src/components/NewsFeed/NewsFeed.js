@@ -28,7 +28,7 @@ class NewsFeed extends React.Component {
 
     render() {
         return (
-            <div className="col-sm-6">
+            <div className="col-sm-12">
                 {!this.state.loading ? this.state.posts.map((item) => {
                     return (
                         <>
