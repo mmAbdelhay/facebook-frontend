@@ -7,12 +7,7 @@ class NewsFeed extends React.Component {
         this.state = {
             posts: [],
             loading: false,
-            //it should be passed from props according to user logged in
-<<<<<<< HEAD
             token: JSON.parse(localStorage.getItem("token")).token
-=======
-            token: '72d83d84784a999e207cf766babfb9f189cd06b9'
->>>>>>> 6d82a3ac4c6be8c8eb1770a53fbdc11a4c905e14
         }
     }
 
@@ -36,10 +31,10 @@ class NewsFeed extends React.Component {
             <div className="col-sm-12">
                 {!this.state.loading ? this.state.posts.map((item) => {
                     return (
-                        <>
+                        <div key={item.id}>
                             <Post key={item.id} post={item}/>
                             <br/>
-                        </>
+                        </div>
                     )
                 }) : <div>Posts is loading ...</div>}
             </div>
