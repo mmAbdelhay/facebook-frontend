@@ -8,11 +8,12 @@ class NewsFeed extends React.Component {
             posts: [],
             loading: false,
             //it should be passed from props according to user logged in
-            token: '33a901c4e13e11acbfb647191040a2c5fe8e67b9'
+            token: JSON.parse(localStorage.getItem("token")).token
         }
     }
 
     async componentDidMount() {
+        console.log(this.state.token)
         this.setState({loading: true});
         let res = await fetch("http://localhost:8000/api/posts/", {
             method: 'GET',

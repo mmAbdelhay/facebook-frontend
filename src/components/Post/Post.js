@@ -1,5 +1,7 @@
 import React from "react";
 import axios from 'axios';
+import { checkIfLoggedIn } from "../../Service/CheckUserStatus";
+
 
 // import styles from "./post.module.css";
 import Comments from '../Comment/Comment'
@@ -8,6 +10,8 @@ class Post extends React.Component {
       super();
       this.state = {
          post: props.post,
+         isLoggedIn: false,
+         token: '',
       };
    }
 
@@ -42,17 +46,27 @@ class Post extends React.Component {
    //    );
 
    // }
+   componentDidMount() {
+      const [loginStatus, loginToken] = checkIfLoggedIn();
+      if (loginStatus) {
+         this.setState({
+            isLoggedIn: loginStatus,
+            token: loginToken,
+         });
+      }else {
+         window.location.href = '/login'
+      }
+   }
 
     
    like = (e) => {
       e.preventDefault();
-      console.log(this.state.post.id)
       axios.post('http://localhost:8000/api/posts/like', {
          
          PID: this.state.post.id
       },{
          headers: {
-           'Authorization': `token 3746252c6831564ea21361fb6d5b5b731a6a0cee`
+           'Authorization': `token ${this.state.token}`
          }
        }).then(function (response) {
           console.log(response.data);
@@ -60,6 +74,18 @@ class Post extends React.Component {
           alert(error);
       });
   }
+  unlike = (e) => {
+   e.preventDefault();
+   axios.delete('http://localhost:8000/api/posts/unlike/'+this.state.post.id,{
+      headers: {
+        'Authorization': `token ${this.state.token}`
+      }
+    }).then(function (response) {
+       console.log(response.data);
+   }).catch(function (error) {
+       alert(error);
+   });
+}
     
     render (){
       return (
