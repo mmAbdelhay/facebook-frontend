@@ -31,30 +31,12 @@ export default class profile extends Component {
    render() {
       return (
          <>
-            <Layout
-               className="mx-2"
-               style={{
-                  position: "fixed",
-                  width: "25%",
-                  left: 0,
-               }}>
-               <Content
+            <div>Info here</div>
+            <div style={{ height: "auto", display: "flex" }}>
+               <div
                   style={{
-                     backgroundColor: "transparent",
-                     placeItems: "center",
-                     overflow: "auto",
+                     width: "70vw",
                   }}>
-                  <ProfileCard userData={this.state.userData} />
-               </Content>
-            </Layout>
-            <Layout
-               className="mx-3"
-               style={{
-                  position: "fixed",
-                  width: "45%",
-                  left: "25%",
-               }}>
-               <Content style={{ height: "auto" }}>
                   {this.state.posts.map((item, index) => {
                      return (
                         <ProfilePosts
@@ -64,21 +46,14 @@ export default class profile extends Component {
                         />
                      );
                   })}
-               </Content>
-            </Layout>
-            <Layout
-               style={{
-                  position: "fixed",
-                  width: "27%",
-                  left: "73%",
-               }}>
-               <Content style={{ overflow: "auto" }}>
+               </div>
+               <div>
                   <h1>FRIEND LIST</h1>
                   {this.state.friendList.map((item, index) => {
                      return <Friends key={index} data={item} />;
                   })}
-               </Content>
-            </Layout>
+               </div>
+            </div>
          </>
       );
    }

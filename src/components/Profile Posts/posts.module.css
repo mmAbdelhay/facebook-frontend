@@ -1,0 +1,26 @@
+.postCard {
+   background-color: #242526;
+   display: grid;
+   height: 50vh;
+   border-radius: 25px;
+   margin: 3%;
+   grid-template-rows: 25% 25% 25% 25%;
+   grid-template-columns: 10% 15% 75%;
+   grid-template-areas:
+      "postIMG . ."
+      "content content content"
+      "content content content"
+      ". . .";
+}
+.content {
+   grid-area: content;
+}
+.postImg {
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   grid-area: postIMG;
+}
+p {
+   margin: 0;
+}
