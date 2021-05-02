@@ -7,12 +7,12 @@ class NewsFeed extends React.Component {
         this.state = {
             posts: [],
             loading: false,
-            //it should be passed from props according to user logged in
-            token: '72d83d84784a999e207cf766babfb9f189cd06b9'
+            token: JSON.parse(localStorage.getItem("token")).token
         }
     }
 
     async componentDidMount() {
+        console.log(this.state.token)
         this.setState({loading: true});
         let res = await fetch("http://localhost:8000/api/posts/", {
             method: 'GET',
@@ -22,19 +22,18 @@ class NewsFeed extends React.Component {
         });
 
         let resJson = await res.json();
-        console.log(res);
         this.setState({posts: resJson, loading: false});
     }
 
     render() {
         return (
-            <div className="col-sm-6">
+            <div className="col-sm-12">
                 {!this.state.loading ? this.state.posts.map((item) => {
                     return (
-                        <>
+                        <div key={item.id}>
                             <Post key={item.id} post={item}/>
                             <br/>
-                        </>
+                        </div>
                     )
                 }) : <div>Posts is loading ...</div>}
             </div>
