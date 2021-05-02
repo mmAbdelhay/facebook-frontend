@@ -5,6 +5,7 @@ import Login from "../Views/login";
 import Signup from "../Views/signup";
 import NewsFeed from "../components/NewsFeed/NewsFeed";
 import CreatePost from "../components/CreatePost/CreatePost";
+import Profile from "../Views/profile";
 import { checkIfLoggedIn } from "../Service/CheckUserStatus";
 
 export default function Routes() {
@@ -13,6 +14,9 @@ export default function Routes() {
       <>
          <Route path="/" exact>
             {status ? <App /> : <Redirect to="/login" />}
+         </Route>
+         <Route path="/profile" exact>
+            {status ? <Profile /> : <Redirect to="/login" />}
          </Route>
          <Route path="/login" exact>
             <Login />

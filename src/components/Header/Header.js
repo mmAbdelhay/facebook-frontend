@@ -5,12 +5,15 @@ import { Button, Form, FormControl, Nav, Navbar } from "react-bootstrap";
 class Header extends React.Component {
    render() {
       return (
-         <Navbar bg="dark" variant="dark">
+         <Navbar bg="dark" variant="dark" className="mb-4">
             <Navbar.Brand href="/">Facebook</Navbar.Brand>
             <Nav className="mr-auto">
                <a href="/" className="nav-item nav-link">
                   News Feed
                </a>
+               <Link to="/profile" className="nav-item nav-link">
+                  Profile
+               </Link>
                <Link to="/login" className="nav-item nav-link">
                   Login
                </Link>
