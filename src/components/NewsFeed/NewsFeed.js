@@ -7,7 +7,7 @@ class NewsFeed extends React.Component {
       this.state = {
          posts: [],
          loading: false,
-         token: "",
+         token: JSON.parse(localStorage.getItem("token")).token,
       };
    }
 
@@ -22,7 +22,6 @@ class NewsFeed extends React.Component {
       });
 
       let resJson = await res.json();
-      console.log(resJson);
       this.setState({ posts: resJson, loading: false });
    }
 
@@ -32,10 +31,10 @@ class NewsFeed extends React.Component {
             {!this.state.loading ? (
                this.state.posts.map((item) => {
                   return (
-                     <>
+                     <div key={item.id}>
                         <Post key={item.id} post={item} />
                         <br />
-                     </>
+                     </div>
                   );
                })
             ) : (
