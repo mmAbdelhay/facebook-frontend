@@ -1,0 +1,15 @@
+.ProfilePosts {
+   width: 70vw;
+}
+@media only screen and (max-width: 768px) {
+   .friendList {
+      display: none;
+   }
+   .fullPage {
+      display: flex;
+      flex-direction: column;
+   }
+   .ProfilePosts {
+      width: 100vw;
+   }
+}

@@ -1,30 +1,47 @@
 import React, { Component } from "react";
 import { Card } from "antd";
+import { CaretRightFilled, ImportOutlined } from "@ant-design/icons";
+import styles from "./posts.module.css";
+import pic from "../../img.jpg";
+
 class ProfilePosts extends Component {
    constructor(props) {
       super(props);
       this.state = {};
    }
+
+   sound = () => {
+      console.log("HELLO");
+   };
+
    render() {
       console.log(this.props.data);
       return (
-         <Card title={this.props.userName} bordered={false} style={{ width: "100%" }}>
-            {this.props.data.group_ID ? <p>Group: {this.props.data.group_ID}</p> : <p></p>}
-            <p> {this.props.data.Time}</p>
-            <p>{this.props.data.content}</p>
-            {this.props.data.postImg ? <img src={this.props.data.postImg} /> : <></>}
-         </Card>
-         //  <div>
-         //     <h6 style={{ display: "inline" }}>{this.props.userName} </h6>
-         //     <h6 className="ml-1" style={{ display: "inline" }}>
-         //        {this.props.data.group_ID}
-         //     </h6>
-         //     <h6 className="ml-5" style={{ display: "inline" }}>
-         //        {this.props.data.Time}
-         //     </h6>
-         //     <p style={{ color: "black" }}>{this.props.data.content}</p>
-         //     <img />
-         //  </div>
+         <div className={styles.postCard}>
+            <div className={styles.topRowInfo}>
+               <img src={pic} className={styles.postImg} />
+
+               <div className={styles.spanHolders}>
+                  {/* <h6>{this.props.userName}</h6>
+                  <p>{this.props.data.Time}</p> */}
+                  <span className={styles.spanText}>{this.props.userName}</span>
+
+                  {this.props.data.group_ID ? (
+                     <>
+                        <CaretRightFilled />
+                        <span className={styles.spanTextGroup} onClick={this.sound}>
+                           Group: {this.props.data.group_ID}
+                        </span>
+                     </>
+                  ) : (
+                     <p></p>
+                  )}
+               </div>
+            </div>
+            <div className={styles.contentHolder}>
+               <p className={styles.content}>{this.props.data.content}</p>
+            </div>
+         </div>
       );
    }
 }
