@@ -3,6 +3,7 @@ import axios from 'axios';
 import { checkIfLoggedIn } from "../../Service/CheckUserStatus";
 import './post.css'
 import UpdatePost from "../UpdatePost/UpdatePost";
+import Comment from '../Comment/Comment'
 class Post extends React.Component {
     constructor(props) {
         super();
@@ -11,6 +12,7 @@ class Post extends React.Component {
             content: props.post.content,
             isLoggedIn: false,
             token: '',
+            comment:''
         };
     }
 
@@ -40,6 +42,35 @@ class Post extends React.Component {
             alert("this isn't your post to delete");
         });
     }
+    setCommentContent = (e) => {
+        // console.log(e.target.value)
+        this.setState({ comment: e.target.value });
+        console.log(this.state.comment)
+     }
+     addComment = (e) => {
+        console.log(this.state.token)
+        console.log(this.state.post.id)
+        if (this.state.comment!=''){
+        e.preventDefault();
+        axios.post(`http://localhost:8000/api/posts/addComment`,{
+            content : this.state.comment,
+            postID: this.state.post.id
+        }, {
+            headers: {
+                'Authorization': `Token ${this.state.token}`
+            }
+        }).then(function (response) {
+            console.log(response.data);
+            alert("comment added successfully");
+            window.location.href = '/'
+        }).catch(function (error) {
+            alert(error);
+        });
+    }else {
+        console.log('no changes')
+    }
+    }
+    
 
     like = (e) => {
         e.preventDefault();
@@ -69,6 +100,7 @@ class Post extends React.Component {
         });
     }
 
+
     render (){
         return (
             <div className="post" id="post">
@@ -85,20 +117,15 @@ class Post extends React.Component {
                 <div className="post-comments">
                     <hr style={{color:"white"}}/>
                     {this.state.post.post.map(comment => (
-                        <div key={comment.id} className="comment">
-                            <img className="avatar"/>
-                            <p>
-                                <span>{comment.UID.username}</span>
-                                {comment.content}
-                            </p>
-                        </div>
+                      <Comment comment={comment} />
+                        
                     ))}
                 </div>
                 <div className="input-group mb-3">
-                    <input type="text" className="form-control" id="commentInput" placeholder="add comment"
-                           aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                    <input type="text" className="form-control" id="commentInput" name='comment' placeholder="add comment"
+                           aria-label="Recipient's username" aria-describedby="basic-addon2" onChange={this.setCommentContent} />
                         <div className="input-group-append">
-                            <button className="btn btn-outline-success" type="button">Comment</button>
+                            <button className="btn btn-outline-success" type="button" onClick={this.addComment}>Comment</button>
                         </div>
                 </div>
                 <button onClick={this.unlike} className="btn btn-outline-secondary float-right m-2">Dislike</button>
