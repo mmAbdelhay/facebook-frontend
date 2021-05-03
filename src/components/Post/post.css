@@ -1,17 +1,20 @@
 #post:hover {
    box-shadow: 5px 5px 5px rgb(57, 60, 60);
 }
+#post {
+   overflow: auto;
+}
 
 #commentInput {
    background-color: #282c34;
    color: white;
    border-color: #3e3e3e;
 }
-#modal2{
+#modal2 {
    background-color: #3e3e3e;
 }
 
-#updatePost{
+#updatePost {
    background-color: #484d4f;
    color: white;
    border-radius: 5px;

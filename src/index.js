@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import Routes from "../src/Routes/Routes";
 import "./index.css";
 import "antd/dist/antd.css";
+import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import Header from "../src/components/Header/Header";
 import reportWebVitals from "./reportWebVitals";
