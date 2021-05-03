@@ -113,6 +113,7 @@ class Post extends React.Component {
                         <span>{this.state.post.Time}</span>
                     </div>
                 </div>
+                {this.state.post.postImg && <img src={"http://localhost:8000"+this.state.post.postImg} width="150px" alt=""/>}
                 <p className="post-content">{this.state.post.content}</p>
                 <div className="post-comments">
                     <hr style={{color: "white"}}/>

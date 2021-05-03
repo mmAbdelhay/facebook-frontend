@@ -43,8 +43,6 @@ class Signup extends React.Component {
             event.target.value = '';
             return false;
         } else {
-            console.log(event.target.value)
-            console.log(event.target.files[0])
             this.setState({
                 file: event.target.files[0]
             })

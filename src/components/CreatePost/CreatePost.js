@@ -7,7 +7,8 @@ class CreatePost extends React.Component {
    constructor() {
       super();
       this.state = {
-         content: ''
+         content: '',
+         file: null
       };
    }
 
@@ -27,13 +28,27 @@ class CreatePost extends React.Component {
       this.setState({ content: e.target.value });
    };
 
+   handleChange2 = (event) => {
+      const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+      if (!allowedExtensions.exec(event.target.value)) {
+         alert('Invalid file type');
+         event.target.value = '';
+         return false;
+      } else {
+         console.log(event.target.files[0])
+         this.setState({file: event.target.files[0]})
+      }
+   }
+
    create = (e) => {
       e.preventDefault();
-      axios.post('http://localhost:8000/api/posts/create', {
-         content: this.state.content
-      },{
+      const formData = new FormData();
+      formData.append('content', this.state.content);
+      formData.append('postImg', this.state.file);
+      console.log(formData)
+      axios.post('http://localhost:8000/api/posts/create', formData,{
          headers: {
-            'Authorization': `token ${this.state.token}`
+            'Authorization': `Token ${this.state.token}`
          }
       }).then(function (response) {
          alert("post created successfully");
@@ -61,7 +76,8 @@ class CreatePost extends React.Component {
                         </button>
                      </div>
                      <div className="modal-body">
-                        <textarea onChange={this.setContent} cols="45" rows="5" placeholder=" type your content" id="createPost" value={this.state.content} />
+                        <textarea onChange={this.setContent} cols="56" rows="5" placeholder=" type your content" id="createPost" value={this.state.content} />
+                        <input type="file" onChange={this.handleChange2}/>
                      </div>
                      <div className="modal-footer">
                         <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Close</button>
