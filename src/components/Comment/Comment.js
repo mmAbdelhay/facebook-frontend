@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { checkIfLoggedIn } from "../../Service/CheckUserStatus";
-
-
+import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
 
 
 // import './comment.css'
@@ -11,10 +9,11 @@ class Comment extends React.Component {
         super();
         this.state = {
             comment: props.comment,
-            commentText:'',
-            token:''
+            commentText: '',
+            token: ''
         }
     }
+
     componentDidMount() {
         const [loginStatus, loginToken] = checkIfLoggedIn();
         if (loginStatus) {
@@ -22,7 +21,7 @@ class Comment extends React.Component {
                 isLoggedIn: loginStatus,
                 token: loginToken,
             });
-        }else {
+        } else {
             window.location.href = '/login'
         }
     }
@@ -35,25 +34,26 @@ class Comment extends React.Component {
             }
         }).then(function (response) {
             console.log(response.data);
-            alert("post deleted successfully");
             window.location.href = '/'
         }).catch(function (error) {
             alert("this isn't your comment to delete");
         });
     }
+
     render() {
         console.log(this.state.comment);
 
         return (
-            <div key={this.state.comment.id} className="comment">
-            <img className="avatar"/>
-            <p>
-                <span>{this.state.comment.UID.username}</span>
-                {this.state.comment.content}
-            </p>
-            <button onClick={this.deleteComment} className="btn btn-outline-danger float-right m-2">Delete</button>
-
-        </div>
+            <>
+                <button onClick={this.deleteComment} className="btn btn-outline-danger float-right m-2">Delete comment</button>
+                <div key={this.state.comment.id} className="comment">
+                    <img className="avatar"/>
+                    <p>
+                        <span>{this.state.comment.UID.username}</span>
+                        {this.state.comment.content}
+                    </p>
+                </div>
+            </>
         )
     }
 }

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Button, Form, FormControl, Nav, Navbar } from "react-bootstrap";
 
 class Header extends React.Component {
-   render() {
+
+    render() {
       return (
          <Navbar bg="dark" variant="dark" className="mb-4">
             <Navbar.Brand href="/">Facebook</Navbar.Brand>
@@ -20,6 +21,9 @@ class Header extends React.Component {
                <Link to="/signup" className="nav-item nav-link">
                   Signup
                </Link>
+                <Link to="/logout" className="nav-item nav-link">
+                    logout
+                </Link>
             </Nav>
             <Form inline>
                <FormControl type="text" placeholder="Search" className="mr-sm-2" />

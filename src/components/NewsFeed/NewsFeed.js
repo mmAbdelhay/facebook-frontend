@@ -20,12 +20,18 @@ class NewsFeed extends React.Component {
             Authorization: `Token ${this.state.token}`,
          },
       });
-
       let resJson = await res.json();
-      this.setState({ posts: resJson, loading: false });
+      if(resJson) {
+         this.setState({posts: resJson, loading: false});
+      }
    }
 
    render() {
+      if (this.state.posts.length === 0){
+         return (
+             <h2 style={{textAlign: 'center', marginTop: '50px', fontStyle: 'oblique', color: 'red'}}>you don't have posts yet, try to create one</h2>
+         );
+      }
       return (
          <div className="col-sm-12">
             {!this.state.loading ? (
