@@ -9,7 +9,6 @@ export const getProfileData = async () => {
          Authorization: "Token " + token,
       },
    });
-   //    console.log(response);
    return response.data.data;
 };
 

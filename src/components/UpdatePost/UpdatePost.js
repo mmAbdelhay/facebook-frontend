@@ -62,7 +62,7 @@ class UpdatePost extends React.Component {
                         </button>
                      </div>
                      <div className="modal-body">
-                        <textarea onChange={this.setContent} cols="45" rows="5" placeholder={this.state.post.content} id="updatePost"/>
+                        <textarea onChange={this.setContent} cols="50" rows="5" placeholder={this.state.post.content} id="updatePost"/>
                      </div>
                      <div className="modal-footer">
                         <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Close</button>
