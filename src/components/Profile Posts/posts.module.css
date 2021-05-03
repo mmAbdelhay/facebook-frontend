@@ -1,26 +1,63 @@
 .postCard {
    background-color: #242526;
-   display: grid;
-   height: 50vh;
+   padding: 2%;
+   min-height: 50vh;
+   max-height: auto;
+
    border-radius: 25px;
    margin: 3%;
-   grid-template-rows: 25% 25% 25% 25%;
-   grid-template-columns: 10% 15% 75%;
-   grid-template-areas:
-      "postIMG . ."
-      "content content content"
-      "content content content"
-      ". . .";
+}
+.topRowInfo {
+   display: flex;
 }
 .content {
-   grid-area: content;
+   font-size: large;
+   font-weight: bold;
 }
+.contentHolder {
+   padding: 5%;
+}
+.spanText {
+   font-size: large;
+   font-weight: bold;
+   color: #e4dab8;
+   padding-left: 20px;
+}
+.spanTextGroup {
+   font-size: large;
+   font-weight: bold;
+   color: #e4dab8;
+   padding-left: 5px;
+   cursor: pointer;
+   position: relative;
+}
+
 .postImg {
    width: 50px;
    height: 50px;
    border-radius: 50%;
-   grid-area: postIMG;
 }
-p {
-   margin: 0;
+
+.spanTextGroup::after {
+   content: "";
+   position: absolute;
+   display: block;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 2px;
+   background: rgb(128, 80, 80);
+   -webkit-transform: scaleX(0);
+   transform: scaleX(0);
+   -webkit-transform-origin: right;
+   transform-origin: right;
+   transition: -webkit-transform 250ms ease-in;
+   transition: transform 250ms ease-in;
+   transition: transform 250ms ease-in, -webkit-transform 250ms ease-in;
+}
+.spanTextGroup:hover::after {
+   -webkit-transform: scaleX(1);
+   transform: scaleX(1);
+   -webkit-transform-origin: left;
+   transform-origin: left;
 }

@@ -5,7 +5,7 @@ import Login from "../Views/login";
 import Signup from "../Views/signup";
 import NewsFeed from "../components/NewsFeed/NewsFeed";
 import CreatePost from "../components/CreatePost/CreatePost";
-import Profile from "../Views/profile";
+import Profile from "../Views/Profile/profile";
 import { checkIfLoggedIn } from "../Service/CheckUserStatus";
 
 export default function Routes() {

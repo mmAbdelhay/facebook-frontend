@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card } from "antd";
-import { CaretRightOutlined } from "@ant-design/icons";
+import { CaretRightFilled, ImportOutlined } from "@ant-design/icons";
 import styles from "./posts.module.css";
 import pic from "../../img.jpg";
 
@@ -10,25 +10,37 @@ class ProfilePosts extends Component {
       this.state = {};
    }
 
+   sound = () => {
+      console.log("HELLO");
+   };
+
    render() {
       console.log(this.props.data);
       return (
          <div className={styles.postCard}>
-            <img src={pic} className={styles.postImg} />
-            <div>
-               <h6>{this.props.userName}</h6>
-               <p style={{ display: "inline" }}>{this.props.data.Time}</p>
-            </div>
-            {this.props.data.group_ID ? (
-               <div>
-                  <CaretRightOutlined />
-                  <p style={{ display: "inline" }}>Group: {this.props.data.group_ID}</p>
-               </div>
-            ) : (
-               <p></p>
-            )}
+            <div className={styles.topRowInfo}>
+               <img src={pic} className={styles.postImg} />
 
-            <p className={styles.content}>{this.props.data.content}</p>
+               <div className={styles.spanHolders}>
+                  {/* <h6>{this.props.userName}</h6>
+                  <p>{this.props.data.Time}</p> */}
+                  <span className={styles.spanText}>{this.props.userName}</span>
+
+                  {this.props.data.group_ID ? (
+                     <>
+                        <CaretRightFilled />
+                        <span className={styles.spanTextGroup} onClick={this.sound}>
+                           Group: {this.props.data.group_ID}
+                        </span>
+                     </>
+                  ) : (
+                     <p></p>
+                  )}
+               </div>
+            </div>
+            <div className={styles.contentHolder}>
+               <p className={styles.content}>{this.props.data.content}</p>
+            </div>
          </div>
       );
    }
