@@ -37,7 +37,7 @@ class UpdatePost extends React.Component {
             poster_ID: this.state.post.poster_ID.id
       },{
          headers: {
-            'Authorization': `token ${this.state.token}`
+            'Authorization': `Token ${this.state.token}`
          }
       }).then(function (response) {
          console.log(response.data);
@@ -62,7 +62,7 @@ class UpdatePost extends React.Component {
                         </button>
                      </div>
                      <div className="modal-body">
-                        <textarea onChange={this.setContent} cols="45" rows="5" value={this.state.post.content} id="updatePost"/>
+                        <textarea onChange={this.setContent} cols="45" rows="5" placeholder={this.state.post.content} id="updatePost"/>
                      </div>
                      <div className="modal-footer">
                         <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Close</button>
