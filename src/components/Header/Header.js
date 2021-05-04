@@ -1,8 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Form, FormControl, Nav, Navbar } from "react-bootstrap";
+import { checkIfLoggedIn } from "../../Service/CheckUserStatus";
 
 class Header extends React.Component {
+   constructor() {
+      super();
+      this.state = {
+         loginStatus: false,
+      };
+   }
+
+   componentDidMount() {
+      const [loginStatus] = checkIfLoggedIn();
+      if (loginStatus) {
+         this.setState({ loginStatus: true });
+      }
+   }
+
+   logout = () => {
+      if (this.state.loginStatus) {
+         localStorage.clear();
+         window.location.href = "/login";
+      }
+   };
+
    render() {
       return (
          <Navbar bg="dark" variant="dark" className="mb-4">
@@ -14,23 +36,24 @@ class Header extends React.Component {
                <Link to="/profile" className="nav-item nav-link">
                   Profile
                </Link>
-               <Link to="/login" className="nav-item nav-link">
-                  Login
-               </Link>
                <Link to="/friendRequests" className="nav-item nav-link">
                   Requests
                </Link>
-               <Link to="/signup" className="nav-item nav-link">
-                  Signup
-               </Link>
-               <Link to="/logout" className="nav-item nav-link">
-                  logout
-               </Link>
+               {!this.state.loginStatus ? (
+                  <>
+                     <Link to="/login" className="nav-item nav-link">
+                        Login
+                     </Link>
+                     <Link to="/signup" className="nav-item nav-link">
+                        Signup
+                     </Link>
+                  </>
+               ) : (
+                  <Link className="nav-item nav-link" onClick={this.logout}>
+                     logout
+                  </Link>
+               )}
             </Nav>
-            <Form inline>
-               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-               <Button variant="outline-info">Search</Button>
-            </Form>
          </Navbar>
       );
    }
