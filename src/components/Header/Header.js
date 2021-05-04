@@ -30,15 +30,7 @@ class Header extends React.Component {
          <Navbar bg="dark" variant="dark" className="mb-4">
             <Navbar.Brand href="/">Facebook</Navbar.Brand>
             <Nav className="mr-auto">
-               <a href="/" className="nav-item nav-link">
-                  News Feed
-               </a>
-               <Link to="/profile" className="nav-item nav-link">
-                  Profile
-               </Link>
-               <Link to="/friendRequests" className="nav-item nav-link">
-                  Requests
-               </Link>
+               
                {!this.state.loginStatus ? (
                   <>
                      <Link to="/login" className="nav-item nav-link">
@@ -49,9 +41,20 @@ class Header extends React.Component {
                      </Link>
                   </>
                ) : (
+                  <>
+                  <a href="/" className="nav-item nav-link">
+                  News Feed
+               </a>
+               <Link to="/profile" className="nav-item nav-link">
+                  Profile
+               </Link>
+               <Link to="/friendRequests" className="nav-item nav-link">
+                  Requests
+               </Link>
                   <Link className="nav-item nav-link" onClick={this.logout}>
                      logout
                   </Link>
+                  </>
                )}
             </Nav>
          </Navbar>
