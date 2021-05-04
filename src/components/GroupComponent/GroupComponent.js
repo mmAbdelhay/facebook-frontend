@@ -1,6 +1,7 @@
 import React from 'react';
 import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 class GroupComponent extends React.Component{
 
@@ -32,10 +33,13 @@ class GroupComponent extends React.Component{
     render(){
         return (
             <div className="card bg-dark text-white" key={this.state.group.id}>
-                <h2 className="card-header text-white">{this.state.group.name}</h2>
+                <h2 className="card-header text-white">{this.state.group.name}
+                </h2>
                 <div className="card-body">
                 <p className="card-text">{this.state.group.overview}</p>
                 <button onClick={this.delete} className="btn btn-outline-danger float-right m-2">Delete Group</button>
+                <Link to={`/groupusers/${this.state.group.id}`}><button className="btn btn-outline-success float-right m-2">See Users</button></Link>
+                <Link to={`/groupapprove/${this.state.group.id}`}><button className="btn btn-outline-success float-right m-2">Approve Users</button></Link>
             </div>
 </div>
         )

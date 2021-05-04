@@ -1,62 +1,69 @@
 import React from 'react';
 import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
+import GroupApproveComponent from '../GroupApproveComponent/GroupApproveComponent';
 import GroupComponent from '../GroupComponent/GroupComponent';
 
-class MyCreatedGroups extends React.Component{
 
-    constructor(){
-        super();
+class GroupApprove extends React.Component{
+
+    constructor(props){
+        super(props);
         this.state={
-            groups:[],
+            users:[],
             loading:false,
             token:JSON.parse(localStorage.getItem("token")).token,
+            gid:this.props.match.params.id
         };
     }
 
     async componentDidMount(){
         const [loginStatus, loginToken] = checkIfLoggedIn();
+        let gid = this.props.match.params.id;
         if (loginStatus) {
             this.setState({
                 loading:true
             });
             console.log(this.state.token);
-            let res= await fetch("http://localhost:8000/api/groups/createdbyyou",{
+            let res= await fetch(`http://localhost:8000/api/groups/pendings/${gid}`,{
                 method:"GET",
                 headers:{
                     Authorization: `Token ${this.state.token}`,
                 }
             });
             let resJson = await res.json();
-            this.setState({groups:resJson,loading: false});
+            this.setState({users:resJson,loading: false});
         } else {
             window.location.href = '/login'
         }
  
     }
 
+
     render(){
-        if (this.state.groups.length === 0){
+        if (this.state.users.length === 0){
             return (
-                <h2 style={{textAlign: 'center', marginTop: '50px', fontStyle: 'oblique', color: 'red'}}>you don't have posts yet, try to create one</h2>
+                <h2 style={{textAlign: 'center', marginTop: '50px', fontStyle: 'oblique', color: 'red'}}>No users in group</h2>
             );
          }
          return (
             <div className="col-sm-12">
                {!this.state.loading ? (
-                  this.state.groups.map((item) => {
+                  this.state.users.map((item) => {
                      return (
                         <div key={item.id}>
-                           <GroupComponent key={item.id} group={item} />
+                           <GroupApproveComponent key={item.id} user={item} gid={this.state.gid} />
                            <br />
                         </div>
                      );
                   })
                ) : (
-                  <div>Posts is loading ...</div>
+                  <div>Users are loading ...</div>
                )}
             </div>
+        // return (
+        //     <div>helloooooooooo</div>
          );
     }
 }
 
-export default MyCreatedGroups;
+export default GroupApprove;
