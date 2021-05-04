@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
+import { ThumbsdownIcon, ThumbsupIcon, CommentDiscussionIcon } from '@primer/octicons-react'
 import './post.css'
 import UpdatePost from "../UpdatePost/UpdatePost";
 import Comment from '../Comment/Comment'
@@ -113,8 +114,8 @@ class Post extends React.Component {
                         <span>{this.state.post.Time}</span>
                     </div>
                 </div>
-                {this.state.post.postImg && <img src={"http://localhost:8000"+this.state.post.postImg} width="150px" alt=""/>}
                 <p className="post-content">{this.state.post.content}</p>
+                {this.state.post.postImg && <img src={"http://localhost:8000"+this.state.post.postImg} width="400px" className="rounded mx-auto d-block" alt="img"/>}
                 <div className="post-comments">
                     <hr style={{color: "white"}}/>
                     {this.state.post.post.map(comment => (
@@ -122,18 +123,18 @@ class Post extends React.Component {
 
                     ))}
                 </div>
+                <br/>
                 <div className="input-group mb-3">
                     <input type="text" className="form-control" id="commentInput" name='comment'
                            placeholder="add comment"
                            aria-label="Recipient's username" aria-describedby="basic-addon2"
                            onChange={this.setCommentContent}/>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-success" type="button" onClick={this.addComment}>Comment
-                        </button>
+                        <button className="btn btn-outline-success" type="button" onClick={this.addComment}><CommentDiscussionIcon size={18} /></button>
                     </div>
                 </div>
-                <button onClick={this.unlike} className="btn btn-outline-secondary float-right m-2">Dislike</button>
-                <button onClick={this.like} className="btn btn-outline-primary float-right m-2">Like</button>
+                <button onClick={this.unlike} className="btn btn-outline-danger float-right m-2"><ThumbsdownIcon size={20} /></button>
+                <button onClick={this.like} className="btn btn-outline-primary float-right m-2"><ThumbsupIcon size={20} /></button>
             </div>
         );
     }

@@ -13,7 +13,7 @@ class Header extends React.Component {
     }
 
     componentDidMount() {
-        const [loginStatus, loginToken] = checkIfLoggedIn();
+        const [loginStatus, ] = checkIfLoggedIn();
         if (loginStatus) {
             this.setState({loginStatus: true});
         }
@@ -50,10 +50,6 @@ class Header extends React.Component {
                         <Link className="nav-item nav-link" onClick={this.logout}>logout</Link>
                     }
                 </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
-                    <Button variant="outline-info">Search</Button>
-                </Form>
             </Navbar>
         );
     }
