@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
+import { ThumbsdownIcon, ThumbsupIcon, CommentDiscussionIcon ,XCircleFillIcon,ArrowRightIcon,PinIcon} from '@primer/octicons-react'
 import './post.css'
 import UpdatePost from "../UpdatePost/UpdatePost";
 import Comment from '../Comment/Comment'
@@ -81,6 +82,7 @@ class Post extends React.Component {
                 'Authorization': `token ${this.state.token}`
             }
         }).then(function (response) {
+            window.location.href = '/'
             console.log(response.data);
         }).catch(function (error) {
             alert(error);
@@ -95,6 +97,7 @@ class Post extends React.Component {
             }
         }).then(function (response) {
             console.log(response.data);
+            window.location.href = '/'
         }).catch(function (error) {
             alert(error);
         });
@@ -104,36 +107,46 @@ class Post extends React.Component {
     render() {
         return (
             <div className="post" id="post">
-                <button onClick={this.delete} className="btn btn-outline-danger float-right m-2">Delete post</button>
+                <button onClick={this.delete} className="btn btn-sm btn-outline-light float-right m-2"><XCircleFillIcon size={18} /></button>
+
                 <UpdatePost post={this.state.post}/>
                 <div className="post-header">
-                    <img className="avatar"/>
+                    <img className="avatar" src={"http://localhost:8000"+this.state.post.poster_ID.profileImg}/>
                     <div className="details">
                         <span>{this.state.post.poster_ID.username}</span>
                         <span>{this.state.post.Time}</span>
                     </div>
                 </div>
-                {this.state.post.postImg && <img src={"http://localhost:8000"+this.state.post.postImg} width="150px" alt=""/>}
                 <p className="post-content">{this.state.post.content}</p>
+                {this.state.post.postImg && <img src={"http://localhost:8000"+this.state.post.postImg} width="400px" className="rounded mx-auto d-block" alt="img"/>}
+                <hr />
+                {!this.state.post.liked ? (
+                                 <button onClick={this.like} className="btn btn-outline-primary btn-lg btn-block m-2" style={{margin:"-11px !important" ,size:'10px',padding:'6px'}}><ThumbsupIcon size={20} />   like   </button>
+
+               ) : (
+                <button onClick={this.unlike} className="btn btn-outline-light  btn-lg btn-block m-2" style={{margin:"-11px !important" ,size:'10px',padding:'6px'}} ><ThumbsdownIcon size={20} />   unlike       </button>
+
+               )}
+                    <hr />
                 <div className="post-comments">
-                    <hr style={{color: "white"}}/>
+               
+               
                     {this.state.post.post.map(comment => (
                         <Comment comment={comment}/>
 
                     ))}
                 </div>
+                <br/>
                 <div className="input-group mb-3">
                     <input type="text" className="form-control" id="commentInput" name='comment'
                            placeholder="add comment"
                            aria-label="Recipient's username" aria-describedby="basic-addon2"
                            onChange={this.setCommentContent}/>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-success" type="button" onClick={this.addComment}>Comment
-                        </button>
+                        <button className="btn btn-outline-secondary" type="button" onClick={this.addComment}><ArrowRightIcon size={18} /></button>
                     </div>
                 </div>
-                <button onClick={this.unlike} className="btn btn-outline-secondary float-right m-2">Dislike</button>
-                <button onClick={this.like} className="btn btn-outline-primary float-right m-2">Like</button>
+               
             </div>
         );
     }

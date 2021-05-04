@@ -44,3 +44,55 @@ export const sendMessage = async (username, message) => {
       },
    });
 };
+
+export const getOtherUserData = async (userName) => {
+   const [, token] = checkIfLoggedIn();
+   const response = await axios.get(serverURL + "api/users/getUser/" + userName, {
+      headers: {
+         Authorization: "Token " + token,
+      },
+   });
+   return response.data.data;
+};
+
+export const friendshipStatus = async (status, username) => {
+   const [, token] = checkIfLoggedIn();
+   let path = "";
+
+   const body = {
+      friend: username,
+   };
+   if (status === "Strangers") path = "api/users/addRequest/" + username;
+   else path = "api/users/rejectRequest";
+
+   const response = await axios.post(serverURL + path, body, {
+      headers: {
+         Authorization: "Token " + token,
+      },
+   });
+};
+
+export const acceptFriendRequest = async (username) => {
+   const [, token] = checkIfLoggedIn();
+
+   const body = {
+      friend: username,
+   };
+
+   const response = await axios.post(serverURL + "api/users/acceptRequest", body, {
+      headers: {
+         Authorization: "Token " + token,
+      },
+   });
+};
+
+export const getFriendList = async () => {
+   const [, token] = checkIfLoggedIn();
+
+   const response = await axios.get(serverURL + "api/users/ListRequests", {
+      headers: {
+         Authorization: "Token " + token,
+      },
+   });
+   return response.data.data;
+};

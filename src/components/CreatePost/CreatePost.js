@@ -62,9 +62,7 @@ class CreatePost extends React.Component {
    render() {
       return (
          <>
-            <button type="button" className="btn btn-block btn-outline-success" data-toggle="modal" data-target="#exampleModal">
-               Create post
-            </button>
+        <div class ='fixed'> <button type="button" class="kc_fab_main_btn" data-toggle="modal" data-target="#exampleModal">+<div class="s">post</div></button></div>
 
             <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div  className="modal-dialog modal-dialog-centered">
