@@ -82,6 +82,7 @@ class Post extends React.Component {
                 'Authorization': `token ${this.state.token}`
             }
         }).then(function (response) {
+            window.location.href = '/'
             console.log(response.data);
         }).catch(function (error) {
             alert(error);
@@ -96,6 +97,7 @@ class Post extends React.Component {
             }
         }).then(function (response) {
             console.log(response.data);
+            window.location.href = '/'
         }).catch(function (error) {
             alert(error);
         });
