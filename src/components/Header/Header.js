@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Form, FormControl, Nav, Navbar } from "react-bootstrap";
+import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
 
 class Header extends React.Component {
+
+    logout = ()=>{
+        const [loginStatus, loginToken] = checkIfLoggedIn();
+        if (loginStatus) {
+            localStorage.clear();
+            window.location.href = '/login'
+        }
+    }
 
     render() {
       return (
@@ -21,9 +30,7 @@ class Header extends React.Component {
                <Link to="/signup" className="nav-item nav-link">
                   Signup
                </Link>
-                <Link to="/logout" className="nav-item nav-link">
-                    logout
-                </Link>
+                <Link className="nav-item nav-link" onClick={this.logout}>logout</Link>
             </Nav>
             <Form inline>
                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
