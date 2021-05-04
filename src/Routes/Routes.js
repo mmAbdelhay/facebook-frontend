@@ -9,6 +9,10 @@ import CreatePost from "../components/CreatePost/CreatePost";
 import Profile from "../Views/Profile/profile";
 import FriendRequests from "../Views/Requests/FriendRequests";
 import { checkIfLoggedIn } from "../Service/CheckUserStatus";
+import MyCreatedGroups from "../components/MyCreatedGroups/MyCreatedGroups";
+import GroupUsers from "../components/GroupUsers/GroupUsers";
+import GroupApprove from "../components/GroupApprove/GroupApprove";
+
 
 export default function Routes() {
    const [status] = checkIfLoggedIn();
@@ -32,6 +36,14 @@ export default function Routes() {
          <Route path="/signup" exact>
             <Signup />
          </Route>
+         <Route path="/mycreatedgroups" exact>
+            <MyCreatedGroups />
+         </Route>
+         <Route path="/groupusers/:id" component={GroupUsers} />
+         <Route path="/groupapprove/:id" component={GroupApprove} />
+
+
+
          {/*<UpdatePost />*/}
          {/* <App /> */}
          {/* </Route> */}
