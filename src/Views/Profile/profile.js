@@ -3,7 +3,6 @@ import { Layout } from "antd";
 import { getProfileData, getAllMessages, getAllPosts } from "../../Service/User";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import Friends from "../../components/FriendMessages/Messages";
-import ProfilePosts from "../../components/Profile Posts/ProfilePosts";
 import styles from "./profilePage.module.css";
 import Posts from "../../components/Post/Post";
 import { serverURL } from "../../Service/serverURL";
@@ -52,7 +51,7 @@ export default class profile extends Component {
                   <div className={styles.tags}>
                      {this.state?.userData?.createdGroups?.map((item, index) => {
                         return (
-                           <Label as="a" color="white" tag>
+                           <Label as="a" color="grey" tag>
                               {item.name}
                            </Label>
                         );
@@ -64,12 +63,6 @@ export default class profile extends Component {
                            </Label>
                         );
                      })}
-                     {/* <Label as="a" color="white" tag>
-                        Featured
-                     </Label>
-                     <Label as="a" color="teal" tag>
-                        Featured
-                     </Label> */}
                   </div>
                </div>
                <div style={{ height: "auto", display: "inline-flex" }}>

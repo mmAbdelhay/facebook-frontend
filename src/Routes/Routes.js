@@ -3,9 +3,11 @@ import { Redirect, Route } from "react-router-dom";
 import App from "../App";
 import Login from "../Views/login";
 import Signup from "../Views/signup";
+import UsersProfile from "../Views/usersProfile/userProfile";
 import NewsFeed from "../components/NewsFeed/NewsFeed";
 import CreatePost from "../components/CreatePost/CreatePost";
 import Profile from "../Views/Profile/profile";
+import FriendRequests from "../Views/Requests/FriendRequests";
 import { checkIfLoggedIn } from "../Service/CheckUserStatus";
 
 export default function Routes() {
@@ -17,6 +19,12 @@ export default function Routes() {
          </Route>
          <Route path="/profile" exact>
             {status ? <Profile /> : <Redirect to="/login" />}
+         </Route>
+         <Route path="/profile/:username" exact>
+            {status ? <UsersProfile /> : <Redirect to="/login" />}
+         </Route>
+         <Route path="/friendRequests" exact>
+            {status ? <FriendRequests /> : <Redirect to="/login" />}
          </Route>
          <Route path="/login" exact>
             <Login />
