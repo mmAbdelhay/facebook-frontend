@@ -50,8 +50,6 @@ class Post extends React.Component {
         console.log(this.state.comment)
     }
     addComment = (e) => {
-        console.log(this.state.token)
-        console.log(this.state.post.id)
         if (this.state.comment !== '') {
             e.preventDefault();
             axios.post(`http://localhost:8000/api/posts/addComment`, {

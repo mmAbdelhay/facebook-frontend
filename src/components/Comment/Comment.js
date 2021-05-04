@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
-import { XCircleFillIcon} from '@primer/octicons-react'
+import { XCircleFillIcon } from '@primer/octicons-react'
 
 
 
