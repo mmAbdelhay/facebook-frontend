@@ -2,6 +2,8 @@ import React from "react";
 import "./UpdatePost.css";
 import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
 import axios from "axios";
+import { ThumbsdownIcon, ThumbsupIcon, CommentDiscussionIcon ,XCircleFillIcon,ArrowRightIcon,PencilIcon} from '@primer/octicons-react'
+
 
 class UpdatePost extends React.Component {
    constructor(props) {
@@ -51,7 +53,7 @@ class UpdatePost extends React.Component {
    render() {
       return (
          <>
-            <button type="button" className="btn btn-outline-warning float-right m-2" data-toggle="modal" data-target="#exampleModal2">Edit</button>
+            <button type="button" className="btn btn-outline-light float-right m-2 btn-sm" data-toggle="modal" data-target="#exampleModal2"><PencilIcon size={18} /></button>
             <div className="modal fade" id="exampleModal2" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div  className="modal-dialog modal-dialog-centered">
                   <div id="modal2" className="modal-content">

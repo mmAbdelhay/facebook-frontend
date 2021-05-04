@@ -18,6 +18,7 @@ class CreatePost extends React.Component {
          this.setState({
             isLoggedIn: loginStatus,
             token: loginToken,
+            error:''
          });
       }else {
          window.location.href = '/login'
@@ -53,8 +54,10 @@ class CreatePost extends React.Component {
       }).then(function (response) {
          alert("post created successfully");
          window.location.href = '/'
-      }).catch(function (error) {
-         alert(error);
+      }).catch((error) => {
+         if (error.response.data.error){
+            this.setState({error: error.response.data.error})
+         }
       });
    }
 
@@ -62,9 +65,7 @@ class CreatePost extends React.Component {
    render() {
       return (
          <>
-            <button type="button" className="btn btn-block btn-outline-success" data-toggle="modal" data-target="#exampleModal">
-               Create post
-            </button>
+        <div class ='fixed'> <button type="button" class="kc_fab_main_btn" data-toggle="modal" data-target="#exampleModal">+<div class="s">post</div></button></div>
 
             <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div  className="modal-dialog modal-dialog-centered">
@@ -76,7 +77,8 @@ class CreatePost extends React.Component {
                         </button>
                      </div>
                      <div className="modal-body">
-                        <textarea onChange={this.setContent} cols="56" rows="5" placeholder=" type your content" id="createPost" value={this.state.content} />
+                        {this.state.error && (<div className="alert alert-danger">{this.state.error}</div>)}
+                        <textarea onChange={this.setContent} cols="57" rows="5" placeholder=" type your content" id="createPost" value={this.state.content} />
                         <input type="file" onChange={this.handleChange2}/>
                      </div>
                      <div className="modal-footer">

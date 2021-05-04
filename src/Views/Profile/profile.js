@@ -37,9 +37,9 @@ export default class profile extends Component {
          <>
             <div className={styles.fullPage}>
                <div className={styles.profileInfo}>
-                  <img
+                  <img 
                      src={serverURL + this.state.userData.profileImg}
-                     width="50px"
+                    style={{width:"50px"}}
                      className="m-3"
                   />
                   <div>

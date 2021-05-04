@@ -47,11 +47,12 @@ class Comment extends React.Component {
 
         return (
             <>
-                <button onClick={this.deleteComment} className="btn btn-sm btn-outline-danger float-right m-2"><XCircleFillIcon size={18} /></button>
+                <button onClick={this.deleteComment} className="btn btn-sm btn-outline-light float-right m-2"><XCircleFillIcon size={18} /></button>
                 <div key={this.state.comment.id} className="comment">
-                    <img className="avatar"/>
+                    <img className="avatar" src={"http://localhost:8000"+this.state.comment.UID.profileImg}/>
                     <p>
                         <span>{this.state.comment.UID.username}</span>
+                        <br/>
                         {this.state.comment.content}
                     </p>
                 </div>

@@ -27,8 +27,11 @@ class App extends React.Component {
       return (
          <>
             <div className="container"><br/>
-               <CreatePost />
+            
                <NewsFeed />
+               {/* <div class="fixed"> */}
+               <CreatePost />
+            {/* </div> */}
             </div>
             <br/>
             <Footer />
