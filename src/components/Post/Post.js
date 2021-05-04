@@ -133,8 +133,13 @@ class Post extends React.Component {
                         <button className="btn btn-outline-success" type="button" onClick={this.addComment}><CommentDiscussionIcon size={18} /></button>
                     </div>
                 </div>
+                {!this.state.post.liked ? (
+                                 <button onClick={this.like} className="btn btn-outline-primary float-right m-2"><ThumbsupIcon size={20} /></button>
+
+               ) : (
                 <button onClick={this.unlike} className="btn btn-outline-danger float-right m-2"><ThumbsdownIcon size={20} /></button>
-                <button onClick={this.like} className="btn btn-outline-primary float-right m-2"><ThumbsupIcon size={20} /></button>
+
+               )}
             </div>
         );
     }
