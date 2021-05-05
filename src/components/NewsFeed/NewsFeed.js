@@ -1,6 +1,6 @@
 import React from "react";
 import Post from "../Post/Post";
-import ThreeDotsWave from "./ThreeDotsWave";
+import LoadingCube from "./LoadingCube/LoadingCube";
 
 class NewsFeed extends React.Component {
     constructor() {
@@ -27,15 +27,15 @@ class NewsFeed extends React.Component {
         }
         setTimeout(()=>{
             this.setState({animation: false})
-        },2000)
+        },3000)
 
     }
 
     render() {
         if (this.state.animation){
             return (
-                <div className="h-100 d-flex justify-content-center align-items-center">
-                    <ThreeDotsWave/>
+                <div className="h-100 d-flex justify-content-center align-items-center" style={{top: '150px'}}>
+                    <LoadingCube />
                 </div>
             );
         }
