@@ -1,53 +1,78 @@
- #post:hover {
-   box-shadow: 5px 5px 5px rgb(57, 60, 60);
+#post:hover {
+    box-shadow: 5px 5px 5px rgb(57, 60, 60);
 }
+
 #post {
-   overflow: auto;
-   width: 90%;
+    overflow: auto;
+    width: 90%;
+    animation-name: myframes;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
 }
+
+@keyframes myframes {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
 img {
-   width: 50%;
+    width: 50%;
 }
 
 #commentInput {
-   background-color: #282c34;
-   color: white;
-   border-color: #3e3e3e;
+    background-color: #282c34;
+    color: white;
+    border-color: #3e3e3e;
 }
+
 #modal2 {
-   background-color: #3e3e3e;
+    background-color: #3e3e3e;
 }
 
 #updatePost {
-   background-color: #484d4f;
-   color: white;
-   border-radius: 5px;
+    background-color: #484d4f;
+    color: white;
+    border-radius: 5px;
 }
-hr{
-   background-color: #fff;
-   margin-top: 6px;
-   margin-bottom: 0px;
+
+hr {
+    background-color: #fff;
+    margin-top: 6px;
+    margin-bottom: 0px;
 }
+
 .btn {
-   border: none;
-   outline: none !important;
- }
-.btn:focus{
-   border: none;
-   outline: none !important;
- }
- .kc_fab_main_btn{
-   background-color:green;
-   width:60px;
-   height:60px;
-   border-radius:100%;
-   background:green;
-   border:none;
-   outline:none;
-   color:#FFF;
-   font-size:36px;
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   transition:.3s;  
-   -webkit-tap-highlight-color: rgba(0,0,0,0);
- }
+    border: none;
+    outline: none !important;
+}
+
+.btn:focus {
+    border: none;
+    outline: none !important;
+}
+
+.kc_fab_main_btn {
+    background-color: green;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: green;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 36px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: .3s;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 
