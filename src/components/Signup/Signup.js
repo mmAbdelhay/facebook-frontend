@@ -58,8 +58,9 @@ class Signup extends React.Component {
         formData.append('password2', this.state.password2);
         formData.append('gender', this.state.gender);
         formData.append('birth_date', this.state.date);
-        formData.append('profileImg', this.state.file);
-
+        if(this.state.file) {
+            formData.append('profileImg', this.state.file);
+        }
         axios.post('http://localhost:8000/api/users/signup', formData
         ).then(function (response) {
             alert(response.data.message);
@@ -75,7 +76,6 @@ class Signup extends React.Component {
             <div>
                 <form>
                     <div className="form-group">
-                        <label>Name:</label>
                         <input
                             type="text"
                             name="name"
@@ -83,11 +83,11 @@ class Signup extends React.Component {
                             onChange={this.setUsername}
                             className="form-control"
                             placeholder="Enter name"
+                            style={style}
                             id="name"/>
                     </div>
 
                     <div className="form-group">
-                        <label>Email Address:</label>
                         <input
                             type="text"
                             name="email"
@@ -95,11 +95,11 @@ class Signup extends React.Component {
                             onChange={this.setEmail}
                             className="form-control"
                             placeholder="Enter email"
+                            style={style}
                             id="email"/>
                     </div>
 
                     <div className="form-group">
-                        <label>Password:</label>
                         <input
                             type="password"
                             name="password"
@@ -107,11 +107,11 @@ class Signup extends React.Component {
                             onChange={this.setPassword}
                             className="form-control"
                             placeholder="Enter password"
+                            style={style}
                             id="password"/>
                     </div>
 
                     <div className="form-group">
-                        <label>Confirm Password:</label>
                         <input
                             type="password"
                             name="confirm_password"
@@ -119,31 +119,36 @@ class Signup extends React.Component {
                             onChange={this.setPassword2}
                             className="form-control"
                             placeholder="Enter confirm password"
+                            style={style}
                             id="confirm_password"/>
                     </div>
 
                     <div className="form-group">
-                        <input type="date" required pattern="\d{4}-\d{2}-\d{2}" onChange={this.setDate}/>
+                        <input type="date" style={style} required pattern="\d{4}-\d{2}-\d{2}" onChange={this.setDate}/>
                     </div>
 
                     <div className="form-group">
                         <input type="file" onChange={this.handleChange}/>
                     </div>
-
-                    <div className="form-group">
-                        <label htmlFor="sel1">Select list:</label>
-                        <select className="form-control" id="sel1" value={this.state.gender} onChange={this.setGender}>
-                            <option value="none">Unknown</option>
+                    <div className="form-group" >
+                        <select style={style} className="form-control" id="sel1" value={this.state.gender} onChange={this.setGender}>
+                            <option value="none">select gender</option>
                             <option value="M">Male</option>
                             <option value="F">Female</option>
                         </select>
                     </div>
-                    <button className="btn btn-block btn-outline-success" onClick={this.signup}>Login</button>
+                    <button className="btn btn-block btn-outline-success" onClick={this.signup}>signup</button>
                 </form>
             </div>
         );
     }
 
+}
+
+const style = {
+    color : "white",
+    backgroundColor: '#484d4f',
+    border : 'solid black 1px'
 }
 
 export default Signup;

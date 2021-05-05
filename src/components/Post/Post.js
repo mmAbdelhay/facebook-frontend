@@ -11,7 +11,8 @@ import {
 } from '@primer/octicons-react'
 import './post.css'
 import UpdatePost from "../UpdatePost/UpdatePost";
-import Comment from '../Comment/Comment'
+import Comment from '../Comment/Comment';
+import defaultImg from './default_img.png'
 import {bindReporter} from "web-vitals/dist/modules/lib/bindReporter";
 import {Link} from "react-router-dom";
 
@@ -145,9 +146,16 @@ class Post extends React.Component {
                                     onClick={this.updatePost}><PencilIcon size={18}/></button>
                         </>)}
                     <div className="post-header">
-                        <img className="avatar" src={"http://localhost:8000" + this.state.post.poster_ID.profileImg}/>
+                        {this.state.post.poster_ID.profileImg ? (
+                            <img className="avatar"
+                                 src={"http://localhost:8000" + this.state.post.poster_ID.profileImg}/>
+                        ) : (
+                            <img className="avatar"
+                                 src={defaultImg} />
+                        )}
                         <div className="details">
-                            <span>{this.state.post.poster_ID.username}{this.state.post.group_ID?(<> <ArrowRightIcon/> <a href={"api/groups/"+this.state.post.group_ID.id}><span>{this.state.post.group_ID.name}</span></a> </>):(<></>)}</span>
+                            <span>{this.state.post.poster_ID.username}{this.state.post.group_ID ? (<> <ArrowRightIcon/>
+                                <a href={"api/groups/" + this.state.post.group_ID.id}><span>{this.state.post.group_ID.name}</span></a> </>) : (<></>)}</span>
                             <span>{this.state.post.Time}</span>
                         </div>
                     </div>
@@ -192,7 +200,7 @@ class Post extends React.Component {
             );
         }
     }
-    }
+}
 
 
-    export default Post;
+export default Post;
