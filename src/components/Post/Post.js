@@ -125,10 +125,10 @@ class Post extends React.Component {
     render() {
         if (this.state.update) {
             return (
-                // 7327652
                 <>
                     <button onClick={this.returnToPost} className="btn btn-sm btn-outline-warning float-sm-right m-2">
-                        return</button>
+                        return
+                    </button>
                     <UpdatePost post={this.state.post}/>
                 </>
 
@@ -136,11 +136,14 @@ class Post extends React.Component {
         } else {
             return (
                 <div className="post" id="post">
-                    <button onClick={this.delete} className="btn btn-sm btn-outline-light float-right m-2">
-                        <XCircleFillIcon
-                            size={18}/></button>
-                    <button type="button" className="btn btn-outline-light float-right m-2 btn-sm"
-                            onClick={this.updatePost}><PencilIcon size={18}/></button>
+                    {this.state.post.mypost === 1 && (
+                        <>
+                            <button onClick={this.delete} className="btn btn-sm btn-outline-light float-right m-2">
+                                <XCircleFillIcon
+                                    size={18}/></button>
+                            <button type="button" className="btn btn-outline-light float-right m-2 btn-sm"
+                                    onClick={this.updatePost}><PencilIcon size={18}/></button>
+                        </>)}
                     <div className="post-header">
                         <img className="avatar" src={"http://localhost:8000" + this.state.post.poster_ID.profileImg}/>
                         <div className="details">
@@ -189,7 +192,7 @@ class Post extends React.Component {
             );
         }
     }
-}
+    }
 
 
-export default Post;
+    export default Post;
