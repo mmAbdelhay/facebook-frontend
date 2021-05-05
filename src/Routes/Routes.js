@@ -16,6 +16,7 @@ import { Form } from 'react-bootstrap';
 import JoinGroup from "../components/JoinGroup/JoinGroup";
 import MyGroups from "../components/MyGroups/MyGroups";
 import GroupPage from "../components/GroupPage/GroupPage";
+import UpdatePost from "../components/UpdatePost/UpdatePost";
 
 
 export default function Routes() {
