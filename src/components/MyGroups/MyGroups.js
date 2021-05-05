@@ -43,7 +43,7 @@ class MyGroups extends React.Component {
                    <div className="card-body">
                      <h5 className="card-title">{item.name}</h5>
                      <p className="card-text">{item.overview}</p>
-                     <Link to={`/grouppage/${this.state.group.id}`}><button className="btn btn-outline-success float-right m-2">visit group</button></Link>
+                     {/* <Link to={`/grouppage/${this.state.group.id}`}><button className="btn btn-outline-success float-right m-2">visit group</button></Link> */}
                    </div>
                  </div>
                  </div>

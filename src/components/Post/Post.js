@@ -147,7 +147,7 @@ class Post extends React.Component {
                     <div className="post-header">
                         <img className="avatar" src={"http://localhost:8000" + this.state.post.poster_ID.profileImg}/>
                         <div className="details">
-                            <span>{this.state.post.poster_ID.username}{this.state.post.group_ID?(<> <ArrowRightIcon/> <a href={"api/groups/"+this.state.post.group_ID.id}><span>{this.state.post.group_ID.name}</span></a> </>):(<></>)}</span>
+                            <span>{this.state.post.poster_ID.username}{this.state.post.group_ID?(<> <ArrowRightIcon/> <a href={"/grouppage/"+this.state.post.group_ID.id}><span>{this.state.post.group_ID.name}</span></a> </>):(<></>)}</span>
                             <span>{this.state.post.Time}</span>
                         </div>
                     </div>
