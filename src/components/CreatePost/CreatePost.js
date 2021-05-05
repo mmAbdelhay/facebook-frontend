@@ -46,7 +46,9 @@ class CreatePost extends React.Component {
         e.preventDefault();
         const formData = new FormData();
         formData.append('content', this.state.content);
-        formData.append('postImg', this.state.file);
+        if(this.state.file){
+            formData.append('postImg', this.state.file)
+        }
         console.log(formData)
         axios.post('http://localhost:8000/api/posts/create', formData, {
             headers: {
