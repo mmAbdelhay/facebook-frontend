@@ -1,6 +1,9 @@
 #modal{
     background-color: #3e3e3e;
 }
+#plus{
+    bottom: 55px;
+}
 
 #createPost{
     background-color: #484d4f;

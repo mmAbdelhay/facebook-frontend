@@ -12,6 +12,7 @@ import {
 import './post.css'
 import UpdatePost from "../UpdatePost/UpdatePost";
 import Comment from '../Comment/Comment'
+import {bindReporter} from "web-vitals/dist/modules/lib/bindReporter";
 
 class Post extends React.Component {
     constructor(props) {
@@ -69,8 +70,10 @@ class Post extends React.Component {
             }).then(function (response) {
                 console.log(response.data);
                 window.location.href = '/'
-            }).catch(function (error) {
-                alert(error);
+            }).catch((error) => {
+                if (error.response.data.error){
+                    this.setState({error: error.response.data.error})
+                }
             });
         } else {
             console.log('no changes')
@@ -124,16 +127,16 @@ class Post extends React.Component {
                     </div>
                 </div>
                 <p className="post-content">{this.state.post.content}</p>
-                {this.state.post.postImg && <img src={"http://localhost:8000" + this.state.post.postImg} width="250px"
+                {this.state.post.postImg && <img src={"http://localhost:8000" + this.state.post.postImg}
                                                  className="rounded mx-auto d-block" alt="img"/>}
                 {!this.state.post.liked ? (
-                    <button onClick={this.like} className="btn btn-outline-primary float-right btn-lg m-2"
+                    <><button onClick={this.like} className="btn btn-outline-primary btn-block btn-lg m-2"
                             style={{margin: "-11px !important", size: '10px', padding: '6px'}}><ThumbsupIcon
-                        size={20}/> like </button>
+                        size={20}/> like </button><hr/></>
                 ) : (
-                    <button onClick={this.unlike} className="btn btn-outline-light float-right btn-lg m-2"
+                   <><button onClick={this.unlike} className="btn btn-outline-danger btn-block btn-lg m-2"
                             style={{margin: "-11px !important", size: '10px', padding: '6px'}}><ThumbsdownIcon
-                        size={20}/> unlike </button>
+                        size={20}/> unlike </button><hr/></>
                 )}
                 <div className="post-comments">
                     {this.state.post.post.map(comment => (
@@ -141,6 +144,7 @@ class Post extends React.Component {
                     ))}
                 </div>
                 <br/>
+                {this.state.error && (<h4 style={{color: 'red'}}>{this.state.error}</h4>)}
                 <div className="input-group mb-3">
                     <input type="text" className="form-control" id="commentInput" name='comment'
                            placeholder="add comment"

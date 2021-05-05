@@ -1,12 +1,12 @@
-/* #post:hover {
+ #post:hover {
    box-shadow: 5px 5px 5px rgb(57, 60, 60);
-} */
+}
 #post {
    overflow: auto;
    width: 90%;
 }
 img {
-   width: 90%;
+   width: 50%;
 }
 
 #commentInput {
