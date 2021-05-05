@@ -38,14 +38,12 @@ class Login extends React.Component {
                 <form>
                     <div className="form-group">
                         <div className="form-group">
-                            <label>User name :</label>
                             <input type="text" className="form-control" onChange={this.setUsername}
-                                   value={this.state.username} placeholder="username"/>
+                                   value={this.state.username} style={style} placeholder="username"/>
                         </div>
                         <div className="form-group">
-                            <label>password :</label>
                             <input type="password" className="form-control" onChange={this.setPassword}
-                                   value={this.state.password} placeholder="password"/>
+                                   value={this.state.password} style={style} placeholder="password"/>
                         </div>
                     </div>
                     <button className="btn btn-block btn-outline-success" onClick={this.login}>Login</button>
@@ -53,6 +51,12 @@ class Login extends React.Component {
             </>
         )
     }
+}
+
+const style = {
+    color : "white",
+    backgroundColor: '#484d4f',
+    border : 'solid black 1px'
 }
 
 export default Login;

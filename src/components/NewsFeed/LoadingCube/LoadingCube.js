@@ -4,7 +4,6 @@ import './LoadingCube.scss'
 export default function LoadingCube() {
     return (
         <>
-            <input type="checkbox" id="shadows" checked/><label htmlFor="shadows">Soft shadows</label>
             <div className="cubes">
                 <div className="cube" data-cube="111">
                     <div className="cube-wrap">
