@@ -154,12 +154,9 @@ class Post extends React.Component {
                                  src={defaultImg} />
                         )}
                         <div className="details">
-<<<<<<< HEAD
+
                             <span>{this.state.post.poster_ID.username}{this.state.post.group_ID?(<> <ArrowRightIcon/> <a href={"/grouppage/"+this.state.post.group_ID.id}><span>{this.state.post.group_ID.name}</span></a> </>):(<></>)}</span>
-=======
-                            <span>{this.state.post.poster_ID.username}{this.state.post.group_ID ? (<> <ArrowRightIcon/>
-                                <a href={"api/groups/" + this.state.post.group_ID.id}><span>{this.state.post.group_ID.name}</span></a> </>) : (<></>)}</span>
->>>>>>> d07d7b13d3cfb114cf3f01c5a3cca39189debbac
+
                             <span>{this.state.post.Time}</span>
                         </div>
                     </div>
