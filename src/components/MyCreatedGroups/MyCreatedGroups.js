@@ -41,19 +41,22 @@ class MyCreatedGroups extends React.Component{
             );
          }
          return (
-            <div className="col-sm-12">
+            <div className="container">
+            <div className="h1 mt-5 mb-5">Manage Groups </div>
+            <div className="row">
                {!this.state.loading ? (
                   this.state.groups.map((item) => {
                      return (
-                        <div key={item.id}>
+                        
                            <GroupComponent key={item.id} group={item} />
-                           <br />
-                        </div>
+                           
+                        
                      );
                   })
                ) : (
                   <div>Groups is loading ...</div>
                )}
+            </div>
             </div>
          );
     }

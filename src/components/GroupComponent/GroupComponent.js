@@ -32,7 +32,7 @@ class GroupComponent extends React.Component{
 
     render(){
         return (
-            <div className="card bg-dark text-white" key={this.state.group.id}>
+            <div className="card bg-dark text-white col-sm-5 ml-4 mt-4 mr-4" key={this.state.group.id}>
                 <h2 className="card-header text-white">{this.state.group.name}
                 </h2>
                 <div className="card-body">

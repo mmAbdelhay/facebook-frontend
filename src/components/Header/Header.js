@@ -47,7 +47,7 @@ class Header extends React.Component {
                                     <NavDropdown.Item href="/joinGroup">Join Group</NavDropdown.Item>
                                     <NavDropdown.Item href="/MyGroups">My Groups</NavDropdown.Item>
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.3">Create Group</NavDropdown.Item> 
+                                    <NavDropdown.Item href="/creategroup">Create Group</NavDropdown.Item> 
                                     <NavDropdown.Item href="/mycreatedgroups">Manage Groups</NavDropdown.Item> 
                                 </NavDropdown>
                             </>
