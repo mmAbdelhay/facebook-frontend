@@ -96,3 +96,26 @@ export const getFriendList = async () => {
    });
    return response.data.data;
 };
+
+export const getOtherUserPosts = async (username) => {
+   const [, token] = checkIfLoggedIn();
+
+   const response = await axios.get(serverURL + "api/posts/profile/posts/" + username, {
+      headers: {
+         Authorization: "Token " + token,
+      },
+   });
+   return response.data;
+};
+
+export const getAllUsers = async () => {
+   const [, token] = checkIfLoggedIn();
+
+   const response = await axios.get(serverURL + "api/users/getUsers", {
+      headers: {
+         Authorization: "Token " + token,
+      },
+   });
+   // console.log(response.data);
+   return response.data.data;
+};

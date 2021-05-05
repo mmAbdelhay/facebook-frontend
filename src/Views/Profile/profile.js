@@ -37,9 +37,9 @@ export default class profile extends Component {
          <>
             <div className={styles.fullPage}>
                <div className={styles.profileInfo}>
-                  <img 
+                  <img
                      src={serverURL + this.state.userData.profileImg}
-                    style={{width:"50px"}}
+                     style={{ width: "50px" }}
                      className="m-3"
                   />
                   <div>
@@ -65,7 +65,12 @@ export default class profile extends Component {
                      })}
                   </div>
                </div>
-               <div style={{ height: "auto", display: "inline-flex" }}>
+               <div
+                  style={{
+                     height: "auto",
+                     display: "flex",
+                     justifyContent: "space-between",
+                  }}>
                   <div className={styles.ProfilePosts}>
                      {this.state.posts.map((item, index) => {
                         return <Posts key={item.id} post={item} />;
@@ -75,7 +80,7 @@ export default class profile extends Component {
                      className={styles.friendList}
                      style={{
                         backgroundColor: "#242526",
-                        position: "absolute",
+
                         right: 0,
                         marginTop: "5vh",
                         paddingTop: "1vh",

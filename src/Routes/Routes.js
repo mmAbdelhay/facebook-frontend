@@ -12,12 +12,12 @@ import { checkIfLoggedIn } from "../Service/CheckUserStatus";
 import MyCreatedGroups from "../components/MyCreatedGroups/MyCreatedGroups";
 import GroupUsers from "../components/GroupUsers/GroupUsers";
 import GroupApprove from "../components/GroupApprove/GroupApprove";
-import { Form } from 'react-bootstrap';
+import { Form } from "react-bootstrap";
 import JoinGroup from "../components/JoinGroup/JoinGroup";
 import MyGroups from "../components/MyGroups/MyGroups";
 import GroupPage from "../components/GroupPage/GroupPage";
+import AllUsers from "../Views/AllUsers/allUsers";
 import CreateGroup from "../components/CreateGroup/CreateGroup";
-
 
 export default function Routes() {
    const [status] = checkIfLoggedIn();
@@ -32,6 +32,9 @@ export default function Routes() {
          <Route path="/profile/:username" exact>
             {status ? <UsersProfile /> : <Redirect to="/login" />}
          </Route>
+         <Route path="/allUsers" exact>
+            {status ? <AllUsers /> : <Redirect to="/login" />}
+         </Route>
          <Route path="/friendRequests" exact>
             {status ? <FriendRequests /> : <Redirect to="/login" />}
          </Route>
@@ -42,21 +45,20 @@ export default function Routes() {
             <Signup />
          </Route>
          <Route path="/mycreatedgroups" exact>
-            
             {status ? <MyCreatedGroups /> : <Redirect to="/login" />}
          </Route>
          <Route path="/groupusers/:id" component={GroupUsers} />
-         <Route path="/groupapprove/:id" component={GroupApprove} /> 
-         
+         <Route path="/groupapprove/:id" component={GroupApprove} />
+
          <Route path="/joinGroup" exact>
             {status ? <JoinGroup /> : <Redirect to="/login" />}
          </Route>
          <Route path="/MyGroups" exact>
-            {status ? <MyGroups/> : <Redirect to="/login" />}
+            {status ? <MyGroups /> : <Redirect to="/login" />}
          </Route>
          <Route path="/grouppage/:gid" component={GroupPage} />
          <Route path="/creategroup" component={CreateGroup} />
-           
+
          {/*<UpdatePost />*/}
          {/* <App /> */}
          {/* </Route> */}

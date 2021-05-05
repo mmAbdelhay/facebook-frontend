@@ -1,10 +1,9 @@
-import { getOtherUserData } from "../../Service/User";
+import { getOtherUserData, getOtherUserPosts, friendshipStatus } from "../../Service/User";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Posts from "../../components/Post/Post";
 import { serverURL } from "../../Service/serverURL";
 import { Label, Icon } from "semantic-ui-react";
-import { friendshipStatus } from "../../Service/User";
-
 import styles from "./usersProfile.module.css";
 
 export default function UserProfile() {
@@ -12,6 +11,7 @@ export default function UserProfile() {
    const [userData, setUserData] = useState({});
    const [buttonText, setButtonText] = useState("Loading");
    const [IconText, setIconText] = useState("");
+   const [posts, setPosts] = useState([]);
 
    useEffect(async () => {
       if (userData.friends == "Pending") {
@@ -32,9 +32,11 @@ export default function UserProfile() {
    }, [userData]);
    useEffect(async () => {
       const data = await getOtherUserData(username);
+      const posts = await getOtherUserPosts(username);
       setUserData(data);
-
-      console.log(data);
+      setPosts(posts);
+      console.log(posts);
+      // console.log(data);
    }, []);
 
    const dealWithRequest = () => {
@@ -47,9 +49,9 @@ export default function UserProfile() {
             <div className={styles.profileInfo}>
                <img
                   src={serverURL + userData.profileImg}
-                  width="10%"
+                  height="50%"
                   className="m-3"
-                  style={{ borderRadius: "50%" }}
+                  style={{ borderRadius: "50%", width: "10%" }}
                />
                <div>
                   <h2 style={{ marginTop: 0, paddingRight: "3vw" }}>{userData.username}</h2>
@@ -76,13 +78,13 @@ export default function UserProfile() {
                   })}
                </div>
             </div>
-            {/* <div style={{ height: "auto", display: "inline-flex" }}>
+            <div style={{ height: "auto", display: "inline-flex" }}>
                <div className={styles.ProfilePosts}>
-                  {this.state.posts.map((item, index) => {
+                  {posts.map((item, index) => {
                      return <Posts key={item.id} post={item} />;
                   })}
                </div>
-            </div> */}
+            </div>
          </div>
       </>
    );
