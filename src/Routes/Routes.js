@@ -12,6 +12,10 @@ import { checkIfLoggedIn } from "../Service/CheckUserStatus";
 import MyCreatedGroups from "../components/MyCreatedGroups/MyCreatedGroups";
 import GroupUsers from "../components/GroupUsers/GroupUsers";
 import GroupApprove from "../components/GroupApprove/GroupApprove";
+import { Form } from 'react-bootstrap';
+import JoinGroup from "../components/JoinGroup/JoinGroup";
+import MyGroups from "../components/MyGroups/MyGroups";
+import GroupPage from "../components/GroupPage/GroupPage";
 
 
 export default function Routes() {
@@ -37,13 +41,20 @@ export default function Routes() {
             <Signup />
          </Route>
          <Route path="/mycreatedgroups" exact>
-            <MyCreatedGroups />
+            
+            {status ? <MyCreatedGroups /> : <Redirect to="/login" />}
          </Route>
          <Route path="/groupusers/:id" component={GroupUsers} />
-         <Route path="/groupapprove/:id" component={GroupApprove} />
-
-
-
+         <Route path="/groupapprove/:id" component={GroupApprove} /> 
+         
+         <Route path="/joinGroup" exact>
+            {status ? <JoinGroup /> : <Redirect to="/login" />}
+         </Route>
+         <Route path="/MyGroups" exact>
+            {status ? <MyGroups/> : <Redirect to="/login" />}
+         </Route>
+         <Route path="/grouppage/:gid" component={GroupPage} />
+           
          {/*<UpdatePost />*/}
          {/* <App /> */}
          {/* </Route> */}

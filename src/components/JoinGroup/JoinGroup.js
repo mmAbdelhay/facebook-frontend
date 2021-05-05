@@ -1,8 +1,9 @@
 import React from 'react';
 import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
-import GroupComponent from '../GroupComponent/GroupComponent';
+import JoinGroupComponent from '../JoinGroupComponent/JoinGroupComponent';
 
-class MyCreatedGroups extends React.Component{
+
+class JoinGroup extends React.Component{
 
     constructor(){
         super();
@@ -20,7 +21,7 @@ class MyCreatedGroups extends React.Component{
                 loading:true
             });
             console.log(this.state.token);
-            let res= await fetch("http://localhost:8000/api/groups/createdbyyou",{
+            let res= await fetch("http://localhost:8000/api/groups/",{
                 method:"GET",
                 headers:{
                     Authorization: `Token ${this.state.token}`,
@@ -37,7 +38,7 @@ class MyCreatedGroups extends React.Component{
     render(){
         if (this.state.groups.length === 0){
             return (
-                <h2 style={{textAlign: 'center', marginTop: '50px', fontStyle: 'oblique', color: 'red'}}>you don't have groups yet, try to create one</h2>
+                <h2 style={{textAlign: 'center', marginTop: '50px', fontStyle: 'oblique', color: 'red'}}>there is no groups yet, try to create one</h2>
             );
          }
          return (
@@ -46,7 +47,7 @@ class MyCreatedGroups extends React.Component{
                   this.state.groups.map((item) => {
                      return (
                         <div key={item.id}>
-                           <GroupComponent key={item.id} group={item} />
+                           <JoinGroupComponent key={item.id} group={item} />
                            <br />
                         </div>
                      );
@@ -59,4 +60,4 @@ class MyCreatedGroups extends React.Component{
     }
 }
 
-export default MyCreatedGroups;
+export default JoinGroup;

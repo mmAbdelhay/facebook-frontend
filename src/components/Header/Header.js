@@ -1,8 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {Button, Form, FormControl, Nav, Navbar} from "react-bootstrap";
+import {Button, Form, FormControl, Nav, Navbar,NavDropdown} from "react-bootstrap";
 import {checkIfLoggedIn} from "../../Service/CheckUserStatus";
-
+import * as ReactBootstrap from "react-bootstrap";
 class Header extends React.Component {
     constructor() {
         super();
@@ -43,6 +43,13 @@ class Header extends React.Component {
                                 <Link to="/friendRequests" className="nav-item nav-link ">
                                     Requests
                                 </Link>
+                                <NavDropdown title="Groups" id="basic-nav-dropdown">
+                                    <NavDropdown.Item href="/joinGroup">Join Group</NavDropdown.Item>
+                                    <NavDropdown.Item href="/MyGroups">My Groups</NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item href="#action/3.3">Create Group</NavDropdown.Item> 
+                                    <NavDropdown.Item href="/mycreatedgroups">Manage Groups</NavDropdown.Item> 
+                                </NavDropdown>
                             </>
                         )}
                     </Nav>
