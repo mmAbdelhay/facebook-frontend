@@ -46,22 +46,19 @@ class GroupApprove extends React.Component{
             );
          }
          return (
-            <div className="col-sm-12">
+            <div className="container">
+                <div className="row">
                {!this.state.loading ? (
                   this.state.users.map((item) => {
                      return (
-                        <div key={item.id}>
                            <GroupApproveComponent key={item.id} user={item} gid={this.state.gid} />
-                           <br />
-                        </div>
                      );
                   })
                ) : (
                   <div>Users are loading ...</div>
                )}
+               </div>
             </div>
-        // return (
-        //     <div>helloooooooooo</div>
          );
     }
 }

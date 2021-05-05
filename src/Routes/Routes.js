@@ -16,6 +16,7 @@ import { Form } from 'react-bootstrap';
 import JoinGroup from "../components/JoinGroup/JoinGroup";
 import MyGroups from "../components/MyGroups/MyGroups";
 import GroupPage from "../components/GroupPage/GroupPage";
+import CreateGroup from "../components/CreateGroup/CreateGroup";
 
 
 export default function Routes() {
@@ -54,6 +55,7 @@ export default function Routes() {
             {status ? <MyGroups/> : <Redirect to="/login" />}
          </Route>
          <Route path="/grouppage/:gid" component={GroupPage} />
+         <Route path="/creategroup" component={CreateGroup} />
            
          {/*<UpdatePost />*/}
          {/* <App /> */}

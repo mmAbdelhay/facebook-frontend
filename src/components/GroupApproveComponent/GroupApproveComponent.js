@@ -36,7 +36,7 @@ class GroupApproveComponent extends React.Component{
 
     render(){
         return (
-            <div className="card bg-dark text-white">
+            <div className="card bg-dark text-white col-lg-5 ml-4 mt-4 mr-4">
                 <h2 className="card-header text-white">{this.state.user.username}</h2>
                 <div className="card-body">
                 <button onClick={this.approve} className="btn btn-outline-success float-right m-2">Approve</button>
