@@ -259,6 +259,54 @@ class Post extends React.Component {
          );
       }
    }
+   //       <div className="details">
+
+   //           <span>{this.state.post.poster_ID.username}{this.state.post.group_ID?(<> <ArrowRightIcon/> <a href={"/grouppage/"+this.state.post.group_ID.id}><span>{this.state.post.group_ID.name}</span></a> </>):(<></>)}</span>
+
+   //           <span>{this.state.post.Time}</span>
+   //       </div>
+   //   </div>
+   //   <p className="post-content">{this.state.post.content}</p>
+   //   {this.state.post.postImg && <img src={"http://localhost:8000" + this.state.post.postImg}
+   //                                    className="rounded mx-auto d-block" alt="img"/>}
+   //   {!this.state.post.liked ? (
+   //       <>
+   //           <button onClick={this.like} className="btn btn-outline-primary btn-block btn-lg m-2"
+   //                   style={{margin: "-11px !important", size: '10px', padding: '6px'}}><ThumbsupIcon
+   //               size={20}/> like
+   //           </button>
+   //           <hr/>
+   //       </>
+   //   ) : (
+   //       <>
+   //           <button onClick={this.unlike} className="btn btn-outline-danger btn-block btn-lg m-2"
+   //                   style={{margin: "-11px !important", size: '10px', padding: '6px'}}><ThumbsdownIcon
+   //               size={20}/> unlike
+   //           </button>
+   //           <hr/>
+   //       </>
+   //   )}
+   //   <div className="post-comments">
+   //       {this.state.post.post.map(comment => (
+   //           <Comment comment={comment}/>
+   //       ))}
+   //   </div>
+   //   <br/>
+   //   {this.state.error && (<h4 style={{color: 'red'}}>{this.state.error}</h4>)}
+   //   <div className="input-group mb-3">
+   //       <input type="text" className="form-control" id="commentInput" name='comment'
+   //              placeholder="add comment"
+   //              aria-label="Recipient's username" aria-describedby="basic-addon2"
+   //              onChange={this.setCommentContent}/>
+   //       <div className="input-group-append">
+   //           <button className="btn btn-outline-secondary" type="button" onClick={this.addComment}>
+   //               <ArrowRightIcon size={18}/></button>
+   //       </div>
+   //   </div>
+   //  </div>
+   // );
+   //   }
+   //  }
 }
 
 export default Post;
