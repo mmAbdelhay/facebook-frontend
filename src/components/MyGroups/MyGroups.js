@@ -1,6 +1,7 @@
 import React from "react";
-import MyGroupsComponent from "../MyGroupsComponent/MyGroupsComponent"
+
 import {Link} from "react-router-dom";
+import GroupPage from '../GroupPage/GroupPage';
 class MyGroups extends React.Component {
    constructor() {
       super();
@@ -14,6 +15,7 @@ class MyGroups extends React.Component {
 
    async componentDidMount() {
       console.log(this.state.token);
+      
       this.setState({ loading: true });
       let res = await fetch("http://localhost:8000/api/groups/list/", {
          method: "GET",
@@ -24,9 +26,11 @@ class MyGroups extends React.Component {
       let resJson = await res.json();
       if(resJson) {
          this.setState({groups: resJson, loading: false});
+         
+         
       }
    }
-
+   
    render() {
       if (this.state.groups.length === 0){
          return (
@@ -34,6 +38,7 @@ class MyGroups extends React.Component {
          );
       }
       return (
+        
         <div className="container">
            {!this.state.loading ? (
               this.state.groups.map((item) => {
@@ -43,7 +48,8 @@ class MyGroups extends React.Component {
                    <div className="card-body">
                      <h5 className="card-title">{item.name}</h5>
                      <p className="card-text">{item.overview}</p>
-                     {/* <Link to={`/grouppage/${this.state.group.id}`}><button className="btn btn-outline-success float-right m-2">visit group</button></Link> */}
+                     
+                     <Link to={`/grouppage/${this.state.groups[0].id}`}><button className="btn btn-outline-success float-right m-2">visit group</button></Link>
                    </div>
                  </div>
                  </div>

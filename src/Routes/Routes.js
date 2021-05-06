@@ -14,6 +14,7 @@ import GroupUsers from "../components/GroupUsers/GroupUsers";
 import GroupApprove from "../components/GroupApprove/GroupApprove";
 import { Form } from "react-bootstrap";
 import JoinGroup from "../components/JoinGroup/JoinGroup";
+import GetRequestedGroups from "../components/GetRequestedGroups/GetRequestedGroups";
 import MyGroups from "../components/MyGroups/MyGroups";
 import GroupPage from "../components/GroupPage/GroupPage";
 import AllUsers from "../Views/AllUsers/allUsers";
@@ -52,6 +53,9 @@ export default function Routes() {
 
          <Route path="/joinGroup" exact>
             {status ? <JoinGroup /> : <Redirect to="/login" />}
+         </Route>
+         <Route path="/requestedGroups" exact>
+            {status ? <GetRequestedGroups /> : <Redirect to="/login" />}
          </Route>
          <Route path="/MyGroups" exact>
             {status ? <MyGroups /> : <Redirect to="/login" />}

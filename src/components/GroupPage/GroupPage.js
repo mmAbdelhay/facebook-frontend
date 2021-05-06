@@ -10,8 +10,7 @@ import {
     CommentDiscussionIcon,
     XCircleFillIcon,
     ArrowRightIcon,
-    PinIcon, PencilIcon
-} from '@primer/octicons-react'
+    PinIcon, PencilIcon} from '@primer/octicons-react'
 
 class GroupPage extends React.Component {
     constructor() {

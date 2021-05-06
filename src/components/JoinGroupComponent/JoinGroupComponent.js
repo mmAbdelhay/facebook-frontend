@@ -31,6 +31,7 @@ class JoinGroupComponent extends React.Component{
             
             alert("this group doesn't accept members right now , try again later");
         });
+        window.location.href = `/joinGroup/`
     }
     
 

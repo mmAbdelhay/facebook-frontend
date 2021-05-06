@@ -92,7 +92,7 @@ class CreatePost extends React.Component {
                                         <img src={sobhy} alt="4ortet el a5la2"/>
                                     </div>
                                 </div>)}
-                                <textarea onChange={this.setContent} cols="57" rows="5" placeholder=" type your content"
+                                <textarea onChange={this.setContent} cols="40" rows="5" placeholder=" type your content"
                                           id="createPost" value={this.state.content}/>
                                 <input type="file" onChange={this.handleChange2}/>
                             </div>
