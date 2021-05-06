@@ -80,7 +80,9 @@ export default class profile extends Component {
                      className={styles.friendList}
                      style={{
                         backgroundColor: "#242526",
-
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "1%",
                         right: 0,
                         marginTop: "5vh",
                         paddingTop: "1vh",
