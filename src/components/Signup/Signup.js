@@ -124,7 +124,8 @@ class Signup extends React.Component {
                     </div>
 
                     <div className="form-group">
-                        <input type="date" style={style} required pattern="\d{4}-\d{2}-\d{2}" onChange={this.setDate}/>
+                        <input type="date" style={style} required pattern="\d{4}-\d{2}-\d{2}" onChange={this.setDate}
+                        max="2009-01-01"/>
                     </div>
 
                     <div className="form-group">
