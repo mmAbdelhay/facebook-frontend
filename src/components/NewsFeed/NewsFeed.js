@@ -21,6 +21,10 @@ class NewsFeed extends React.Component {
                 Authorization: `Token ${this.state.token}`,
             },
         });
+        if(res.statusText === 'Unauthorized'){
+            localStorage.clear();
+            window.location.href = '/login'
+        }
         let resJson = await res.json();
         if (resJson) {
             this.setState({posts: resJson, loading: false});
